@@ -1,0 +1,45 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  background-color: #FAFAFA;
+}
+
+.header{
+  padding: 20px;
+  border-bottom: 1px solid lightgray;
+  background-color: #fff;
+}
+
+.header__img{
+  object-fit: contain;
+}
+
+.post {
+  max-width: 500px;
+  margin: 20px;
+  border: 1px solid lightgray;
+}
+
+.post__head{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
+}
+
+.post__head h4 {
+  padding-left: 10px;
+}
+
+.post__img{
+  object-fit: contain;
+  width: 100%;
+}
+
+.post__content {
+  padding: 20px;
+}
