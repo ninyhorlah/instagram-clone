@@ -7,7 +7,7 @@ const Post = ({username, caption, imageUrl}) => {
         <div className='post'>
             <div className="post__head">
             <Avatar>H</Avatar>
-            <h4>Username</h4>
+            <h4>{username}</h4>
             </div>
 
            <div className="post__content">
