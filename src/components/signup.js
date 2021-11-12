@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+// import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Logo from './logo';
 import { Input } from '@mui/material';
@@ -37,6 +38,8 @@ export default function SignUp() {
         console.log(user);
     })
     .catch(error => alert(error.message))
+
+    setOpen(false)
   }
 
   return (
@@ -47,7 +50,9 @@ export default function SignUp() {
         onClose={() => setOpen(false)}
       >
         <Box sx={style} onSubmit={handleSubmit}>
+            <center>
             <Logo />
+            </center>
 
             <Input 
             value={username}
@@ -69,7 +74,7 @@ export default function SignUp() {
             placeholder="Password" 
             inputProps={ariaLabel} />
 
-            <Button onClick={() => setOpen(false)} type='submit'>Sign Up</Button>
+            <Button onClick={handleSubmit} type='submit'>Sign Up</Button>
         </Box>
       </Modal>
     </div>

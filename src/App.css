@@ -19,7 +19,7 @@
   background-color: #fff;
 }
 
-.header__img{
+.header__img, .auth__img{
   object-fit: contain;
 }
 
@@ -50,3 +50,6 @@
 }
 
 /* Authentication ui styling */
+.auth__img{
+  width: 30% ;
+}

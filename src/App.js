@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/header';
+import Login from './components/login';
 import Post from './components/post';
 import SignUp from './components/signup';
 import { db, collection, getDocs } from './firebase'
@@ -37,6 +38,7 @@ function App() {
         </div>
         <div>
           <SignUp/>
+          <Login />
         </div>
       </div>
     </div>
