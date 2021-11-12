@@ -8,6 +8,11 @@
   background-color: #FAFAFA;
 }
 
+.app__content{
+  display: flex;
+  
+}
+
 .header{
   padding: 20px;
   border-bottom: 1px solid lightgray;
@@ -43,3 +48,5 @@
 .post__content {
   padding: 20px;
 }
+
+/* Authentication ui styling */

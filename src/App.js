@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/header';
 import Post from './components/post';
-import { db, collection, getDocs } from './testFirebase'
+import SignUp from './components/signup';
+import { db, collection, getDocs } from './firebase'
 // import {db} from './firebase'
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
 
   useEffect(() => {
     
-    async function getCities(db) {
+    async function getPosts(db) {
     const postCol = collection(db, 'posts');
     const postSnapshot = await getDocs(postCol);
     const postList = postSnapshot.docs.map(doc => ({
@@ -19,7 +20,7 @@ function App() {
     }));
     setPosts(postList)
   }
-  getCities(db);
+  getPosts(db);
     
   }, [])
 
@@ -28,9 +29,16 @@ function App() {
     <div className="App">
       <Header />
 
-      {posts.map(({id, post}) => 
-        post && <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
-        )}
+      <div className='app__content'>
+        <div>
+            {posts.map(({id, post}) => 
+            post && <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+            )}
+        </div>
+        <div>
+          <SignUp/>
+        </div>
+      </div>
     </div>
   );
 }
