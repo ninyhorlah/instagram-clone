@@ -1,7 +1,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite'
-// import { getAuth } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 // import { getStorage } from 'firebase/storage'
 // import initializeApp from 'firebase/app'
 
@@ -28,13 +28,13 @@ const firebaseApp = initializeApp({
 });
 
 const db = getFirestore(firebaseApp);
-// const auth = getAuth();
+const auth = getAuth();
 // const storage = getStorage();
 
 // const db = firebaseApp.firestore()
 // const auth = firebase.auth()
 // const storage = firebase.storage()
 
-export { db, collection, getDocs };
+export { db, auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, collection, getDocs };
 // export { db, auth, storage }
 // export default firebase;
