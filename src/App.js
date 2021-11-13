@@ -30,15 +30,16 @@ function App() {
     <div className="App">
       <Header />
 
+      <div className="app__auth">
+        <SignUp/>          
+        <Login />
+      </div>
+
       <div className='app__content'>
         <div>
             {posts.map(({id, post}) => 
             post && <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
             )}
-        </div>
-        <div>
-          <SignUp/>
-          <Login />
         </div>
       </div>
     </div>
