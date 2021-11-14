@@ -4,11 +4,13 @@ import Header from './components/header';
 import Login from './components/login';
 import Post from './components/post';
 import SignUp from './components/signup';
-import { db, collection, getDocs } from './firebase'
+import { db, collection, getDocs, onAuthStateChanged, auth } from './firebase'
 // import {db} from './firebase'
 
 function App() {
   const[posts, setPosts] = useState([])
+  const [username, setUsername] = useState();
+  const[getUser, setGetUser] = useState(null)
 
   useEffect(() => {
     
@@ -25,14 +27,27 @@ function App() {
     
   }, [])
 
+  useEffect(() => {
+    onAuthStateChanged(auth, user => {
+      if(user !== null ){
+        // console.log(user.displayName, user.email);
+        setGetUser(user.displayName)
+        console.log(getUser);
+      } else {
+        console.log(user);
+      }
+    })
+  }, [getUser, username])
+
   
   return (
     <div className="App">
       <Header />
 
       <div className="app__auth">
-        <SignUp/>          
+        <SignUp username={username} setUsername={setUsername} />          
         <Login />
+        Username: {getUser}
       </div>
 
       <div className='app__content'>
