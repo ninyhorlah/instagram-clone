@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/header';
 import Login from './components/login';
+import Logout from './components/logout';
 import Post from './components/post';
 import SignUp from './components/signup';
 import { db, collection, getDocs, onAuthStateChanged, auth } from './firebase'
@@ -29,7 +30,7 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged(auth, user => {
-      if(user !== null ){
+      if(user){
         // console.log(user.displayName, user.email);
         setGetUser(user.displayName)
         console.log(getUser);
@@ -45,8 +46,15 @@ function App() {
       <Header />
 
       <div className="app__auth">
-        <SignUp username={username} setUsername={setUsername} />          
-        <Login />
+        {getUser ? 
+        (<Logout getUser={getUser} setGetUser={setGetUser} />) :
+        (<div className="app__auth">
+          <Login />
+          <SignUp username={username} setUsername={setUsername} /> 
+        </div>)
+      } 
+             
+        
         Username: {getUser}
       </div>
 
