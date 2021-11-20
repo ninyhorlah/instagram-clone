@@ -5,6 +5,7 @@ import Login from './components/login';
 import Logout from './components/logout';
 import Post from './components/post';
 import SignUp from './components/signup';
+import Upload from './components/upload';
 import { db, collection, getDocs, onAuthStateChanged, auth } from './firebase'
 // import {db} from './firebase'
 
@@ -17,11 +18,13 @@ function App() {
     
     async function getPosts(db) {
     const postCol = collection(db, 'posts');
+    console.log(postCol);
     const postSnapshot = await getDocs(postCol);
     const postList = postSnapshot.docs.map(doc => ({
       id: doc.id,
       post: doc.data()
     }));
+    console.log(postSnapshot);
     setPosts(postList)
   }
   getPosts(db);
@@ -59,6 +62,12 @@ function App() {
       </div>
 
       <div className='app__content'>
+        {getUser?.displayName ? (
+          <h3>Sorry, you need to login to upload.</h3>
+          
+        ) : (
+          <Upload getUser={getUser} />
+        )}
         <div>
             {posts.map(({id, post}) => 
             post && <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
