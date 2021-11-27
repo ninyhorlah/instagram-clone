@@ -84,19 +84,25 @@
   width: 70%;
 }
 
+.app__leftWrapper{
+  position: fixed;
+  right: 16%;
+  margin: 20px;
+}
+
 .app__left{
+  display: flex;
+  justify-content: space-between;
   position: fixed;
   right: 10%;
   margin: 20px;
-  display: flex;
-  justify-content: space-between;
-  width: 20%;
   align-items: center;
 }
 
 .app__leftInner{
   display: flex;
   align-items: center;
+  padding-right: 10px;
 }
 
 .app__leftInner h2, h2{
@@ -109,6 +115,13 @@
 
 .app__leftInner p {
   padding-left: 10px;
+  font-weight: 600;
+}
+
+.app__leftInner small{
+  font-size: 10px;
+  padding-left: 10px;
+  color: rgb(128, 126, 126);
 }
 
 .upload__contents{
@@ -123,6 +136,19 @@
 
 .upload__progress{
   width: 100%;
+}
+
+.suggestions{
+  margin-top: 90px;
+}
+
+.suggestions p {
+  color: rgb(133, 157, 157);
+  font-weight: 700;
+}
+
+.suggestions small {
+  font-weight: 10px;
 }
 
 @media screen and (max-width: 980px){
