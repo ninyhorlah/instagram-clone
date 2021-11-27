@@ -33,7 +33,7 @@
 }
 
 .header__img {
-  width: 150px;
+  width: 50%;
 }
 
 .header__img, .auth__img{
@@ -161,5 +161,19 @@
 
   .app__right{
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .app__content{
+    max-width: 100%;
+  }
+
+  .app__header{
+    width: 100%;
+  }
+
+  .app__auth button {
+    font-size: 10px;
   }
 }
