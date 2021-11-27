@@ -7,7 +7,8 @@ import Post from './components/post';
 import SignUp from './components/signup';
 import Upload from './components/upload';
 import { db, collection, getDocs, onAuthStateChanged, auth } from './firebase'
-// import {db} from './firebase'
+import Avatar from '@mui/material/Avatar'
+
 
 function App() {
   const[posts, setPosts] = useState([])
@@ -34,7 +35,7 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       if(user){
-        // console.log(user.displayName, user.email);
+        console.log(user.getIdToken(true), user.email);
         setGetUser(user.displayName)
         console.log(getUser);
       } else {
@@ -43,35 +44,46 @@ function App() {
     })
   }, [getUser, username])
 
-  
   return (
     <div className="App">
-      <Header />
+      <div className="app__headerWrapper">
+      <div className="app__header">
+        <Header />
 
-      <div className="app__auth">
-        {getUser ? 
-        (<Logout getUser={getUser} setGetUser={setGetUser} />) :
-        (<div className="app__auth">
-          <Login />
-          <SignUp username={username} setUsername={setUsername} /> 
-        </div>)
-      } 
-             
-        
-        Username: {getUser}
+        <div className="app__auth">
+          {getUser ? 
+          (<Logout getUser={getUser} setGetUser={setGetUser} />) :
+          (<div className="app__auth">
+            <Login />
+            <SignUp username={username} setUsername={setUsername} /> 
+          </div>)
+        } 
+              
+          
+          <Avatar>{getUser?.charAt(0).toUpperCase()}</Avatar>
+        </div>
+      </div>
       </div>
 
-      <div className='app__content'>
-        {getUser?.displayName ? (
-          <h3>Sorry, you need to login to upload.</h3>
+      <div className='app__content'>          
+        <div className="app__right">
           
-        ) : (
+          <div className="app__inner">
+              {posts.map(({id, post}) => 
+              post && <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
+              )}
+          </div>
           <Upload getUser={getUser} />
-        )}
-        <div>
-            {posts.map(({id, post}) => 
-            post && <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
-            )}
+        </div>
+        <div className="app__left">
+          <div className='app__leftInner'>
+            <Avatar>{getUser?.charAt(0).toUpperCase()}</Avatar>
+            <p>{getUser}</p>
+          </div>
+          {getUser ? 
+          (<Logout getUser={getUser} setGetUser={setGetUser} />) :
+          (null)
+        } 
         </div>
       </div>
     </div>

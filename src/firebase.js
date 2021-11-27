@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, addDoc, doc, setDoc, collection, getDocs, serverTimestamp } from 'firebase/firestore/lite'
+import { getFirestore, addDoc, doc, setDoc, collection, getDocs, serverTimestamp, orderBy, query } from 'firebase/firestore/lite'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 import { getStorage, ref, uploadBytes } from 'firebase/storage'
 // import initializeApp from 'firebase/app'
@@ -39,6 +39,8 @@ export {
         db, 
         auth, 
         storage,
+        query,
+        orderBy,
         addDoc,
         setDoc, 
         doc,

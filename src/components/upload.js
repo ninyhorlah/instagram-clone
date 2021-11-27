@@ -12,8 +12,7 @@ const Upload = ({getUser}) => {
 
     const handleUpload = () => {
         
-        const imageRef = ref(storage, `images/${image}`)
-            console.log(imageRef);
+        const imageRef = ref(storage, `images/`)
 
         const uploadTask = uploadBytesResumable(imageRef, image)
 
@@ -58,21 +57,19 @@ const Upload = ({getUser}) => {
     // console.log(image.name);
     return (
         <div>
-            {/* {getUser ? 
-            (<div>
-                <input type="file" />
-                <input type="text" placeholder='Enter Caption'/>
-                <Button>Upload</Button>
+            {getUser ? 
+            (<div className='upload__contents'>
+                <progress value={progress} max='100' className='upload__progress'/>             
+                <input type="text" placeholder='Enter Caption...' value={caption} onChange={e => setCaption(e.target.value)} />
+                <input type="file" onChange={handleChange} />
+                <Button onClick={handleUpload} >Upload</Button>
             </div>)
             :
             (
                 <div><h3>Login to upload</h3></div>
             )
-             } */}
-                <progress value={progress} max='100' />             
-                <input type="text" placeholder='Enter Caption...' value={caption} onChange={e => setCaption(e.target.value)} />
-                <input type="file" onChange={handleChange} />
-                <Button onClick={handleUpload} >Upload</Button>
+             }
+                
         </div>
     )
 }
