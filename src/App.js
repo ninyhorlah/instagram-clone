@@ -10,6 +10,7 @@ import { db, collection, getDocs, onAuthStateChanged, auth } from './firebase'
 import Avatar from '@mui/material/Avatar'
 import { InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import Suggestions from './components/suggestions';
 
 
 
@@ -91,15 +92,21 @@ function App() {
           </div>
           <Upload getUser={getUser} />
         </div>
-        <div className="app__left">
-          <div className='app__leftInner'>
-            <Avatar>{getUser?.charAt(0).toUpperCase()}</Avatar>
-            <p>{getUser}</p>
+        <div className="app__leftWrapper">
+          <div className="app__left">
+            <div className='app__leftInner'>
+              <Avatar>{getUser?.charAt(0).toUpperCase()}</Avatar>
+              <div>
+                <p>{getUser}</p>
+                <small>Welcome to Instagram</small>
+              </div>
+            </div>
+            {getUser ? 
+            (<Logout getUser={getUser} setGetUser={setGetUser} />) :
+            (null)
+          } 
           </div>
-          {getUser ? 
-          (<Logout getUser={getUser} setGetUser={setGetUser} />) :
-          (null)
-        } 
+          <Suggestions />
         </div>
       </div>
     </div>
