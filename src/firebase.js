@@ -1,8 +1,8 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite'
+import { getFirestore, addDoc, doc, setDoc, collection, getDocs, serverTimestamp, orderBy, query } from 'firebase/firestore/lite'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
-// import { getStorage } from 'firebase/storage'
+import { getStorage, ref, uploadBytes } from 'firebase/storage'
 // import initializeApp from 'firebase/app'
 
 // const firebaseConfig = {
@@ -29,12 +29,29 @@ const firebaseApp = initializeApp({
 
 const db = getFirestore(firebaseApp);
 const auth = getAuth();
-// const storage = getStorage();
+const storage = getStorage();
 
 // const db = firebaseApp.firestore()
 // const auth = firebase.auth()
 // const storage = firebase.storage()
 
-export { db, auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, collection, getDocs };
+export { 
+        db, 
+        auth, 
+        storage,
+        query,
+        orderBy,
+        addDoc,
+        setDoc, 
+        doc,
+        ref, 
+        uploadBytes, 
+        createUserWithEmailAndPassword, 
+        signInWithEmailAndPassword, 
+        onAuthStateChanged, 
+        collection, 
+        getDocs,
+        serverTimestamp 
+};
 // export { db, auth, storage }
 // export default firebase;

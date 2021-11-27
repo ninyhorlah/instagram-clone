@@ -6,7 +6,7 @@ const Post = ({username, caption, imageUrl}) => {
     return (
         <div className='post'>
             <div className="post__head">
-            <Avatar>H</Avatar>
+            <Avatar>{username?.charAt(0).toUpperCase()}</Avatar>
             <h4>{username}</h4>
             </div>
 
