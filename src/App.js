@@ -8,6 +8,9 @@ import SignUp from './components/signup';
 import Upload from './components/upload';
 import { db, collection, getDocs, onAuthStateChanged, auth } from './firebase'
 import Avatar from '@mui/material/Avatar'
+import { InputAdornment, TextField } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+
 
 
 function App() {
@@ -49,6 +52,19 @@ function App() {
       <div className="app__headerWrapper">
       <div className="app__header">
         <Header />
+
+        <TextField
+          className='header__input'
+              placeholder="Search"
+              size='small'
+              InputProps={{
+              startAdornment: (
+                  <InputAdornment position="start">
+                  <SearchIcon />
+                  </InputAdornment>
+              ),
+              }}
+          />
 
         <div className="app__auth">
           {getUser ? 
