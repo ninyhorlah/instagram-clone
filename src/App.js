@@ -25,6 +25,7 @@ function App() {
     const postCol = collection(db, 'posts');
     console.log(postCol);
     const postSnapshot = await getDocs(postCol);
+    console.log(postSnapshot);
     const postList = postSnapshot.docs.map(doc => ({
       id: doc.id,
       post: doc.data()
@@ -87,7 +88,7 @@ function App() {
           
           <div className="app__inner">
               {posts.map(({id, post}) => 
-              post && <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
+              post && <Post key={id} postId={id} username={post.username} user={getUser} caption={post.caption} imageUrl={post.imageUrl}/>
               )}
           </div>
           <Upload getUser={getUser} />
