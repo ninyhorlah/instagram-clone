@@ -151,6 +151,32 @@
   font-weight: 10px;
 }
 
+/* Comments */
+.comment{
+  display: flex;
+  margin-top: 10px;
+}
+
+.post__comment{
+  padding: 20px;
+}
+
+.comment__input{
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-top: 1px solid lightgray;
+}
+
+.comment__btn{
+  flex: 0;
+  border: none;
+  color: #6082a3;
+  padding: 10px;
+  border-top: 1px solid lightgray;
+  background-color: transparent;
+}
+
 @media screen and (max-width: 980px){
   .app__content{
     display: block;
